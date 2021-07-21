@@ -2,7 +2,8 @@ from __future__ import with_statement
 from __future__ import absolute_import
 import sys
 sys.path.append('../utils/')
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 from utils.model_utils import *
 
