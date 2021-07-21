@@ -11,10 +11,10 @@ import glob
 
 ######## check for model and download if not present
 if not len(glob.glob('weights/PieAPP_model_v0.1.ckpt.*')) == 3:
-	print "downloading dataset"
+	print ("downloading dataset")
 	os.system("bash scripts/download_PieAPPv0.1_TF_weights.sh")
 	if not len(glob.glob('weights/PieAPP_model_v0.1.ckpt.*')) == 3:
-		print "PieAPP_model_v0.1.ckpt files not downloaded"
+		print ("PieAPP_model_v0.1.ckpt files not downloaded")
 		sys.exit()		
 
 ######## variables
@@ -85,5 +85,5 @@ with tf.Session() as sess:
 			score_accum += np.sum(np.multiply(PieAPP_patchwise_errors,PieAPP_patchwise_weights),axis=1)
 			weight_accum += np.sum(PieAPP_patchwise_weights, axis=1)
 
-	print  'PieAPP value of '+args.A_path+ ' with respect to: '+str(score_accum/weight_accum)	
+	print  ('PieAPP value of '+args.A_path+ ' with respect to: '+str(score_accum/weight_accum))
 	
