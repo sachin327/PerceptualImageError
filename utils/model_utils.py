@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 def extract_image_patches(image_batch, patch_size,patch_stride):	
@@ -8,7 +9,7 @@ def extract_image_patches(image_batch, patch_size,patch_stride):
 
 
 def conv_init(name,input_channels, filter_height, filter_width, num_filters, groups=1):
-  weights = get_scope_variable(name, 'weights', shape=[filter_height, filter_width, input_channels/groups, num_filters], trainable=False)
+  weights = get_scope_variable(name, 'weights', shape=[filter_height, filter_width, input_channels//groups, num_filters], trainable=False)
   biases = get_scope_variable(name, 'biases', shape = [num_filters],trainable=False)
 
 
